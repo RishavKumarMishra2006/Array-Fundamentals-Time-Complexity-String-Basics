@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <string.h>
+
+// Function to check if a string is a palindrome
+int isPalindrome(char s[]){
+    int left = 0;
+    int right = strlen(s) - 1;
+
+    // Continue looping while the two pointers have not crossed
+    while (left < right) {
+      
+        // If the characters at the current positions
+        // are not equal
+        if (s[left] != s[right])
+            return 0;
+
+        // Move the left pointer to the right and
+        // the right pointer to the left
+        left++;
+        right--;
+    }
+
+    // If no mismatch is found, return 1 (palindrome)
+    return 1;
+}
+
+int main(){
+    char s[] = "abba";
+    printf("%d\n", isPalindrome(s));
+    return 0;
+}
