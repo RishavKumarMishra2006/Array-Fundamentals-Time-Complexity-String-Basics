@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int n;
+    // Read the size of the array
+    scanf("%d", &n);
+
+    // Dynamically allocate memory for an array of n integers.
+    // malloc returns a void pointer, so we cast it to an int pointer.
+    int* arr = (int*)malloc(n * sizeof(int));
+
+    // Check if memory allocation was successful
+    if (arr == NULL) {
+        fprintf(stderr, "Memory allocation failed\n");
+        return 1; // Exit with an error code
+    }
+
+    // Read the n integers into the array
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Print the array in reverse order
+    // Start from the last element (index n-1) and go down to the first (index 0)
+    for (int i = n - 1; i >= 0; i--) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n"); // Print a newline at the end for clean output
+
+    // Free the dynamically allocated memory to prevent memory leaks
+    free(arr);
+
+    return 0; // Indicate successful execution
+}
