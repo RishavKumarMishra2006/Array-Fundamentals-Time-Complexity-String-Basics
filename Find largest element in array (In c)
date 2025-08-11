@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Comparison function for qsort in descending order
+int compare(const void *a, const void *b) {
+    return (*(int *)b - *(int *)a);
+}
+
+// Function to find K'th largest element
+int kthLargest(int arr[], int n, int K) {
+  
+    // Sort the array in descending order
+    qsort(arr, n, sizeof(int), compare);
+  
+    // Return K'th largest element
+    return arr[K - 1];
+}
+
+int main() {
+    int arr[] = {12, 3, 5, 7, 19};
+    int n = 5, K = 2;
+    printf("%d", kthLargest(arr, n, K));
+    return 0;
+}
