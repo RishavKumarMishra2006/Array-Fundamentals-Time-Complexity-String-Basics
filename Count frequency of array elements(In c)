@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+
+class GFG{
+    public static List<List<int>> countFreq(int[] arr){
+        Array.Sort(arr); 
+        int n = arr.Length;
+        List<List<int>> ans = new List<List<int>>();
+        int i = 0;
+        while (i < n){
+            int current = arr[i];
+            int firstIndex = i;
+            int lastIndex = i;
+            
+            // Find lastIndex by moving forward        
+           while (lastIndex + 1 < n && 
+            arr[lastIndex + 1] == current)
+                lastIndex++;
+                
+            // Calculate frequency
+            int fre = lastIndex - firstIndex + 1; 
+            
+            // store in arrayList
+            List<int> temp = new List<int> { current, fre };
+            ans.Add(temp);
+            
+            // Skip counted elements
+            i = lastIndex + 1; 
+        }
+        return ans;
+    }
+    
+    static void Main(){
+        int[] arr = {10, 20, 10, 5, 20};
+        List<List<int>> ans = countFreq(arr);
+        foreach (var x in ans){
+            Console.WriteLine(x[0] + " " + x[1]);
+        }
+    }
+}
